@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SHEROES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+
+    <style>
+      .main{
+        width: 95vw;
+        margin: auto;
+        padding: 20px 0
+      }
+
+      .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .header>img {
+         vertical-align: middle;
+      }
+
+      .helper>p {
+        padding-left: 15px;
+        display: inline;
+        font-size: 25px;
+      }
+
+      .community{
+        font-size: 150%;
+      }
+
+      .community-type{
+        font-size: 110%;
+      }
+
+      .post {
+        font-size: 150%;
+      }
+
+      .post-t {
+        padding: 0;
+        margin: 0;
+        font-size: 120%;
+      }
+
+      .sub-main {
+        display: flex;
+      }
+
+      .button {
+        width: 140px;
+        margin: 2px 0!important;
+      }
+
+      .left {
+        padding: 0 30px 0 0;
+      }
+
+      .middle {
+        width: 50vw;
+        height: 75vh;
+        overflow-y: scroll;
+        overflow-x: hidden; 
+      }
+
+      .right {
+        padding: 0 20px;
+      }
+
+      .capitalize {
+        text-transform: capitalize;
+      }
+
+      .analysis-top {
+        font-size: 150%;
+        font-weight: bold;
+      }
+
+      table {
+        width: 400px!important;
+      }
+
+      .prediction-percent {
+        font-size: 120%;
+        margin-left: 20px;
+        color: green;
+      }
+
+      .lighter {
+          color: #999;
+          font-weight: 100;
+          font-size: 80%;
+      }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+      <div class="header">
+        <div class="helper">
+          <img src='{{ url_for('static',filename='logo.png') }}' height="40px"/>
+        </div>
+        <div class="helper">
+          <p>SHEROES Label Maker <strong class="lighter">| Post Labels</strong><p>
+        </div>
+      </div>
+
+      <br/><br/>
+      
+      <div class="sub-main">
+        
+        <div class="left"> LABELS </br></br>
+          
+          <form method="post" action="/post">
+            <input type="hidden" name="id" value={{result['id']}}>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="question">
+              <i class="question icon"></i>
+              Question
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="self">
+              <i class="user icon"></i>
+              Self/Quote
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="health">
+              <i class="plus icon"></i>
+              Health
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="information">
+              <i class="lightbulb icon"></i>
+              Information
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="business">
+              <i class="rupee sign icon"></i>
+              Business
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="job">
+              <i class="suitcase sign icon"></i>
+              Job
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="travel">
+              <i class="plane icon"></i>
+              Travel
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="cooking">
+              <i class="food icon"></i>
+              Cooking
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="link">
+              <i class="linkify icon"></i>
+              Link
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="beauty">
+              <i class="star icon"></i>
+              Beauty
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="education">
+              <i class="book icon"></i>
+              Education
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="relationship">
+              <i class="heart icon"></i>
+              Relationship
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="salutation">
+              <i class="sun icon"></i>
+              Salutation
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="hashtag">
+              <i class="slack hash icon"></i>
+              Hashtag
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" type="submit" name="label" value="miscellaneous">
+              <i class="trash icon"></i>
+              Misc.
+            </button></br></br>
+
+            <button class="ui button tiny secondary" type="submit" name="label" value="skip">
+              Skip
+            </button></br>
+
+            
+          
+          </form>
+        </div>
+
+        <div class="middle"> POSTS </br></br>
+          <div class="community">Community Name : {{result['COMMUNITY_NAME']}}</div>
+          <div class="community-type">Type : {{result['COMMUNITY_TYPE']}}</div >
+          <div class="community-type">id : {{result['id']}}</div >
+          <br/><br/>
+          <div class="ui label teal">New</div>
+          </br>
+          </br>
+          <div class="post">{{result['POST']}}</div> 
+        </div>
+
+        <div class="right">ANALYSIS </br></br>
+          <form method="post" action="/post">
+            <input type="hidden" name="id" value={{result['id']}}>
+            <button class="ui button green ml" type="submit" name="label" value={{prediction['predicted']}}>
+              <div class="capitalize">{{prediction['predicted']}} </div>
+            </button>
+            <strong class="prediction-percent">{{ prediction['probabilities'][prediction['predicted']]|round(2) }}% </strong>
+          </form>
+          
+          </br>
+
+          <table class="ui celled fixed compact table">
+          <thead>
+            <tr>
+              <th>Label</th>
+              <th>Probability</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, value in prediction['probabilities'].items() %}
+            {% if key!= "PREDICTED" and key != prediction['predicted']:%} 
+            <tr>
+              <td>{{key.title()}}</td>
+              <td>{{value|round(2)}}%</td>
+            </tr>
+            {% endif %}
+          {% endfor %} 
+          </tbody>
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+</body>
+</html>

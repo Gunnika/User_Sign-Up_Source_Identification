@@ -1,0 +1,6 @@
+profile_pictures.csv
+.ipynb_checkpoints/
+.git/
+app/__pycache__
+app/posts.db
+.DS_Store

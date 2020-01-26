@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SHEROES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+
+    <style>
+    .main{
+        width: 80vw;
+        margin: auto;
+        padding: 30px 0
+      }
+      
+      .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .header>img {
+         vertical-align: middle;
+      }
+
+      .helper>p {
+        padding-left: 15px;
+        display: inline;
+        font-size: 25px;
+      }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+      <div class="header">
+        <div class="helper">
+          <img src='{{ url_for('static',filename='logo.png') }}' height="40px"/>
+        </div>
+        <div class="helper">
+          <p>SHEROES Label Maker<p>
+        </div>
+      </div>
+
+      <br/><br/>
+      
+        <div>
+          <h1>No More Posts To Label :D</h1>
+        </div>
+    </div>
+</body>
+</html>

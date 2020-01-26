@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SHEROES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+
+    <style>
+      .main{
+        width: 95vw;
+        margin: auto;
+        padding: 20px 0
+      }
+
+      .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .header>img {
+         vertical-align: middle;
+      }
+
+      .helper>p {
+        padding-left: 15px;
+        display: inline;
+        font-size: 25px;
+      }
+
+      .community{
+        font-size: 150%;
+      }
+
+      .community-type{
+        font-size: 110%;
+      }
+
+      .post {
+        font-size: 150%;
+      }
+
+      .post-t {
+        padding: 0;
+        margin: 0;
+        font-size: 120%;
+      }
+
+      .sub-main {
+        display: flex;
+      }
+
+      .button {
+        width: 140px;
+        margin: 2px 0!important;
+      }
+
+      .left {
+        padding: 0 30px 0 0;
+      }
+
+      .middle {
+        width: 50vw;
+        height: 80vh;
+        overflow-y: scroll;
+        overflow-x: hidden; 
+      }
+
+      .right {
+        padding: 0 20px;
+      }
+
+      .capitalize {
+        text-transform: capitalize;
+      }
+
+      .analysis-top {
+        font-size: 150%;
+        font-weight: bold;
+      }
+
+      table {
+        width: 400px!important;
+      }
+
+      .prediction-percent {
+        font-size: 120%;
+        margin-left: 20px;
+        color: green;
+      }
+
+      .center {
+          text-align: center;
+      }
+
+      .lighter {
+          color: #999;
+          font-weight: 100;
+          font-size: 80%;
+      }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+      <div class="header">
+        <div class="helper">
+          <img src='{{ url_for('static',filename='logo.png') }}' height="40px"/>
+        </div>
+        <div class="helper">
+          <p>SHEROES Label Maker <strong class="lighter">| Gender</strong><p>
+        </div>
+      </div>
+
+      <br/><br/>
+      
+      <div class="sub-main">
+        
+        <div class="left"> LABELS </br></br>
+          
+          <form method="post" action="/gender">
+            <input type="hidden" name="id" value="">
+
+            <button class="ui labeled icon button tiny primary" id="male" type="submit" name="label" value="male">
+              <i class="mars icon"></i>
+              Male
+            </button></br>
+
+            <button class="ui labeled icon button tiny primary" id="female" type="submit" name="label" value="female">
+              <i class="venus icon"></i>
+              Female
+            </button></br>
+          
+          </form>
+        </div>
+
+        <div class="middle"> PROFILE PICTURES </br></br>
+            <div class="community"> Name : Kautuk Kundan</div>
+            <div class="community-type">id : 20103312</div >
+            <div class="ui large image center">
+            </br>
+            <img class="ui large rounded image" src="https://semantic-ui.com/images/wireframe/square-image.png">            
+                <i class="arrow left icon"></i>
+                Male
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Female
+                <i class="arrow right icon"></i>
+            </div>
+            </br>
+        </div>
+
+        <div class="right">ANALYSIS </br></br>
+          <form method="post" action="/dp">
+            
+          </form>
+          
+          </br>
+
+          <table class="ui celled fixed compact table">
+          <thead>
+            <tr>
+              <th>Label</th>
+              <th>Probability</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          </tbody>
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('keydown', function(e) {
+            if (e.key == "ArrowLeft") {
+                document.getElementById("male").click();
+            }
+            else if (e.key == "ArrowRight") {
+                document.getElementById("female").click();
+            }
+        }); 
+    </script>
+</body>
+</html>
