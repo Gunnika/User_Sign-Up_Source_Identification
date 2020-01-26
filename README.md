@@ -15,6 +15,8 @@ This project identifies the source of a user's profile picture on the SHEROES pl
 4. Self
 5. Miscellaneous
 
+![Sign-Up Sources](Images/sign-up_sources.png)
+
 
 ## Use Cases
 - It helps in sending alerts and push notifications to those who haven’t set their own pictures.
